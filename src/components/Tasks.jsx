@@ -29,7 +29,7 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchAllTasks();
-    }, [])
+    }, [tasks])
 
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
