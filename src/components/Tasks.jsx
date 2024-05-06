@@ -1,15 +1,8 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
-import CheckBoxUi from './CheckBoxUI'
 import db from "../db/config"
-
-const renderItem = ({item}) => (
-    <View>
-        <Text>{item.name}</Text>
-        <CheckBoxUi value={!!item.completedAt} />
-    </View>
-)
+import renderItem from './renderItem';
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([])
@@ -34,11 +27,6 @@ const Tasks = () => {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
             <FlatList data={tasks} renderItem={renderItem} keyExtractor={(item) => item.id}/>
-
-            {/* <View>
-                <Text>Lift weight</Text>
-                <CheckBoxUi value={false} />
-            </View> */}
         </View>
     )
 }
