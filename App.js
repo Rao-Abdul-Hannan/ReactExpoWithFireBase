@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CreateTask from './src/screens/CreateTask';
 import { Ionicons } from '@expo/vector-icons';
+import 'react-native-gesture-handler';
+
 
 export default function App() {
   const Stack = createStackNavigator();

@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
 import db from "../db/config"
-import renderItem from './renderItem';
+import RenderItem from './RenderItem';
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([])
@@ -22,11 +22,13 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchAllTasks();
-    }, [tasks])
+    }, [])
 
+    // here in the UI
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', marginTop: 50}}>
-            <FlatList data={tasks} renderItem={renderItem} keyExtractor={(item) => item.id}/>
+            {/* only an empty check box is visible */}
+            <FlatList data={tasks} renderItem={RenderItem} keyExtractor={(item) => item.id}/>
         </View>
     )
 }
