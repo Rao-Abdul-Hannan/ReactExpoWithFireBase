@@ -1,10 +1,12 @@
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import CheckBoxUi from "./CheckBoxUI"
 import { doc, updateDoc } from 'firebase/firestore'
 import db from '../db/config'
+// import { useNavigation } from '@react-navigation/native'
 
-const RenderItem = ({item}) => {
+const RenderItem = ({ item }) => {
+    // const navigation = useNavigation();
     const updateTask = async (taskId, value) => {
         try {
             const taskDocRef = doc(db, 'tasks', taskId);
@@ -15,8 +17,10 @@ const RenderItem = ({item}) => {
         }
     }
     return (
-        <View style={styles.edit}>
-            <Text>{item.name}</Text>
+        <View style={styles.container}>
+
+            <Text style={styles.taskName}>{item.name}</Text>
+
             <CheckBoxUi value={!!item.completedAt} onValueChange={(value) => updateTask(item.id, value)} />
         </View>
     )
@@ -25,5 +29,18 @@ const RenderItem = ({item}) => {
 export default RenderItem
 
 const styles = StyleSheet.create({
-    edit: {flex: 1, flexDirection: 'row'}
+    container: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderBottomColor: '#ccc',
+    },
+    taskName: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'black',
+    }
 })

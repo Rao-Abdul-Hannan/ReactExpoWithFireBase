@@ -5,13 +5,13 @@ import React, { useState } from 'react'
 const CheckBoxUi = (props) => {
     const [value, setValue] = useState(props.value);
 
-    const toggleCheckbox = (isChecked) => {
-        setValue(!isChecked);
-        props.onValueChange(!isChecked);    
+    const toggleCheckbox = () => {
+        setValue(!value);
+        props.onValueChange(!value);    
     };
 
     return (
-        <TouchableOpacity onPress={(value) => toggleCheckbox()}>
+        <TouchableOpacity onPress={toggleCheckbox}>
             {value ? <Feather name="check-square" size={24} color="black" /> : <Feather name="square" size={24} color="black" />}
         </TouchableOpacity>
     )

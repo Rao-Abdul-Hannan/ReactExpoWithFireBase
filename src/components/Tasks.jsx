@@ -2,7 +2,7 @@ import { FlatList, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
 import db from "../db/config"
-import RenderItem from './RenderItem';
+import RenderItem from "./RenderItem.jsx"
 
 
 const Tasks = () => {
@@ -23,8 +23,9 @@ const Tasks = () => {
 
     useEffect(() => {
         fetchAllTasks();
-    }, [])
+    }, [tasks])
 
+    // here in the UI
     return (
         <View>
             <FlatList data={tasks} renderItem={RenderItem} keyExtractor={(item) => item.id}/>

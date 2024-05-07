@@ -5,9 +5,9 @@ import db from '../db/config';
 import { addDoc, collection } from 'firebase/firestore';
 
 const CreateTask = () => {
-  const navigation = useNavigation();
-
   const [name, setName] = useState('')
+  
+  const navigation = useNavigation();
 
   const handleAddTask = async () => {
     try {
@@ -40,7 +40,7 @@ const CreateTask = () => {
         autoFocus={true}
       />
       <TouchableOpacity style={styles.button} onPress={handleSubmit} disabled={!name}>
-        <Text style={{ textAlign: 'center', }}>Create</Text>
+        <Text style={{ textAlign: 'center'}}>Create</Text>
       </TouchableOpacity>
     </View>
   )
