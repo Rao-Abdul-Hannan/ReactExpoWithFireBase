@@ -11,7 +11,7 @@ const CheckBoxUi = (props) => {
     };
 
     return (
-        <TouchableOpacity onPress={() => toggleCheckbox(value)}>
+        <TouchableOpacity onPress={(value) => toggleCheckbox()}>
             {value ? <Feather name="check-square" size={24} color="black" /> : <Feather name="square" size={24} color="black" />}
         </TouchableOpacity>
     )

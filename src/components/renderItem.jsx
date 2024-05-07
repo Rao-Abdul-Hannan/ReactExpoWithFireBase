@@ -4,7 +4,7 @@ import CheckBoxUi from "./CheckBoxUI"
 import { doc, updateDoc } from 'firebase/firestore'
 import db from '../db/config'
 
-const renderItem = (item) => {
+const RenderItem = ({item}) => {
     const updateTask = async (taskId, value) => {
         try {
             const taskDocRef = doc(db, 'tasks', taskId);
@@ -15,13 +15,15 @@ const renderItem = (item) => {
         }
     }
     return (
-        <View>
+        <View style={styles.edit}>
             <Text>{item.name}</Text>
             <CheckBoxUi value={!!item.completedAt} onValueChange={(value) => updateTask(item.id, value)} />
         </View>
     )
 }
 
-export default renderItem
+export default RenderItem
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    edit: {flex: 1, flexDirection: 'row'}
+})
