@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import CreateTask from './src/screens/CreateTask';
 import { Ionicons } from '@expo/vector-icons';
 import 'react-native-gesture-handler';
+import UpdateTasks from './src/screens/UpdateTasks';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -28,7 +29,7 @@ export default function App() {
         })}
         />
         <Stack.Screen name="Create Tasks" component={CreateTask}/>
-        {/* <Stack.Screen name="Update-Tasks" component={UpdateTasks}/> */}
+        <Stack.Screen name="Update Tasks" component={UpdateTasks}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

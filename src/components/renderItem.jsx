@@ -3,9 +3,9 @@ import React from 'react'
 import CheckBoxUi from "./CheckBoxUI"
 import { doc, updateDoc } from 'firebase/firestore'
 import db from '../db/config'
-// import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 
-const RenderItem = ({ item }) => {
+const RenderItem = ({ item, navigation }) => {
     // const navigation = useNavigation();
     const updateTask = async (taskId, value) => {
         try {
@@ -16,10 +16,16 @@ const RenderItem = ({ item }) => {
             console.error('Error updating task:', error);
         }
     }
+
+    const goToUpdateTasks  = () => {
+        navigation.navigate("Update Tasks", { taskId: item.id }); // Pass taskId as route parameter
+    }
     return (
         <View style={styles.container}>
 
-            <Text style={styles.taskName}>{item.name}</Text>
+            <TouchableOpacity onPress={goToUpdateTasks}>
+                <Text style={styles.taskName}>{item.name}</Text>
+            </TouchableOpacity>
 
             <CheckBoxUi value={!!item.completedAt} onValueChange={(value) => updateTask(item.id, value)} />
         </View>

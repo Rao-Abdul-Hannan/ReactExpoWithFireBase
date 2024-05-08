@@ -2,11 +2,14 @@ import { FlatList, StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
 import db from "../db/config"
-import RenderItem from "./RenderItem.jsx"
+import RenderItem from "./RenderItem"
+import { useNavigation } from '@react-navigation/native';
 
 
 const Tasks = () => {
     const [tasks, setTasks] = useState([])
+
+    const navigation = useNavigation();
 
     const fetchAllTasks = async () => {
         try {
@@ -28,8 +31,8 @@ const Tasks = () => {
     // here in the UI
     return (
         <View>
-            <FlatList data={tasks} renderItem={RenderItem} keyExtractor={(item) => item.id}/>
-        </View>
+            <FlatList data={tasks} renderItem={({ item }) => <RenderItem item = { item } navigation={ navigation } />} keyExtractor={(item) => item.id}/>
+        </View> 
     )
 }
 
