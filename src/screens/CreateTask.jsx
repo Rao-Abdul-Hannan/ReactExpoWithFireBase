@@ -1,7 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, View, TextInput, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
-import db from '../db/config';
+import { db } from '../db/config';
 import { addDoc, collection } from 'firebase/firestore';
 
 const CreateTask = () => {

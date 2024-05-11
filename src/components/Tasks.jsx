@@ -1,7 +1,7 @@
-import { FlatList, StyleSheet, View } from 'react-native'
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { collection, getDocs } from 'firebase/firestore';
-import db from "../db/config"
+import { db } from "../db/config"
 import RenderItem from "./RenderItem"
 import { useNavigation } from '@react-navigation/native';
 
@@ -16,7 +16,7 @@ const Tasks = () => {
             const querySnapshot = await getDocs(collection(db, 'tasks'));
             const taskArray = [];
             querySnapshot.forEach((doc) => {
-                taskArray.push({id: doc.id, ...doc.data()});
+                taskArray.push({ id: doc.id, ...doc.data() });
             })
             setTasks(taskArray);
         } catch (error) {
@@ -31,11 +31,15 @@ const Tasks = () => {
     // here in the UI
     return (
         <View>
-            <FlatList data={tasks} renderItem={({ item }) => <RenderItem item = { item } navigation={ navigation } />} keyExtractor={(item) => item.id}/>
-        </View> 
+            <View>
+                <FlatList data={tasks} renderItem={({ item }) => <RenderItem item={item} navigation={navigation} />} keyExtractor={(item) => item.id} />
+            </View>
+        </View>
+
     )
 }
 
 export default Tasks
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+})

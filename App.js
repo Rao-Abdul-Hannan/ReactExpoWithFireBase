@@ -6,6 +6,9 @@ import CreateTask from './src/screens/CreateTask';
 import { Ionicons } from '@expo/vector-icons';
 import 'react-native-gesture-handler';
 import UpdateTasks from './src/screens/UpdateTasks';
+import SignUp from './src/components/SignUp';
+import SignUpLogin from './src/screens/SignUpLogin';
+import Login from './src/screens/Login';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -13,6 +16,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen name="Create an account" component={SignUpLogin}/>
         <Stack.Screen 
         name="Tasks" 
         component={Home}
@@ -30,6 +34,7 @@ export default function App() {
         />
         <Stack.Screen name="Create Tasks" component={CreateTask}/>
         <Stack.Screen name="Update Tasks" component={UpdateTasks}/>
+        <Stack.Screen name="Login" component={Login}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

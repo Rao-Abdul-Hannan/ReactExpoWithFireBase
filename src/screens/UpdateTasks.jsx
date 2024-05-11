@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { deleteDoc, doc, updateDoc } from 'firebase/firestore';
 import { TextInput, TouchableWithoutFeedback } from 'react-native-gesture-handler';
-import db from '../db/config';
+import { db } from '../db/config';
 import { Ionicons } from '@expo/vector-icons';
 
 const UpdateTasks = () => {

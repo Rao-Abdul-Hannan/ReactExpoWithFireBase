@@ -2,8 +2,7 @@ import { Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import CheckBoxUi from "./CheckBoxUI"
 import { doc, updateDoc } from 'firebase/firestore'
-import db from '../db/config'
-import { useNavigation } from '@react-navigation/native'
+import { db } from '../db/config'
 
 const RenderItem = ({ item, navigation }) => {
     // const navigation = useNavigation();
